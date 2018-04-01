@@ -30,11 +30,15 @@
             // console.log(fileToRead);
             const scan = new FileReader();
             scan.readAsText(fileToRead);
-            // scan;
             scan.onload = function(e) {
-                const fileString = e.target.result;
-                document.querySelector('p').innerHTML= fileString;
-                console.log(fileString);
+                const fileString = e.target.result.replace(/\n/ig, '');
+                // to split the csv into diff rows
+                const fileRows = fileString.split(`\r`);
+                // document.querySelector('p').innerHTML= fileString;
+                console.log(fileRows);
+                const fileCol = fileRows.map(col => {
+                    console.log(col.split(','))
+                })
             }
 
         })
