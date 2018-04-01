@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <p></p>
+    <input type="file" id='csv'>
+    <button>convert</button>
+
+    <script>
+        
+        const selectedFile = document.getElementById('csv');
+        const convert = document.querySelector('button');
+        let fileToRead;
+
+        selectedFile.addEventListener('change', function(){
+            fileToRead = selectedFile.files[0];
+            // console.log(typeof fileToRead);
+           
+        });
+        
+     
+
+        convert.addEventListener('click', function readFile(){
+            // console.log('hi');
+            // console.log(fileToRead);
+            const scan = new FileReader();
+            scan.readAsText(fileToRead);
+            // scan;
+            scan.onload = function(e) {
+                const fileString = e.target.result;
+                document.querySelector('p').innerHTML= fileString;
+                console.log(fileString);
+            }
+
+        })
+        
+
+
+        
+
+
+
+        // convert the csv file into a JSON file
+        // this is essentially what we want from the csv
+        // {
+        //     "Dog": {
+        //         "Loud": "yes",
+        //         "Dirty": "yes",
+        //         "Fluffy": "yes"
+        //     },
+        //     "Cat": {
+        //         "Loud": "no",
+        //         "Dirty": "no",
+        //         "Fluffy": "yes"
+        //     },
+        //     "Bird": {
+        //         "Loud": "yes",
+        //         "Dirty": "no",
+        //         "Fluffy": "no"
+        //     },
+        //     "Lizard": {
+        //         "Loud": "no",
+        //         "Dirty": "no",
+        //         "Fluffy": "no"
+        //     }
+        // }
+
+    </script>
+</body>
+</html>
