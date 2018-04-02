@@ -35,7 +35,7 @@
 
                 // to split the csv into diff rows
                 const fileRows = fileString.split(`\r`);
-
+                console.log(fileRows);
                 // split individual words
                 const fileCol = fileRows.map(col => col.split(','));
 
@@ -45,26 +45,33 @@
                 // the animals array
                 const firstRow = fileCol[0];
                 console.log(fileCol);
-                const firstCol = [];
-                // const obj = {};
-                const objectConstruct = firstRow.map(header => {
-                    console.log({
-                        animal:header
-                        
-                    });
-                })
-                console.log(objectConstruct);
 
-                // console.log(fileCol);
-                // // push the fluffy, dirty, loud into a separate array
-                // for (let i = 1; i < fileCol.length; i++){
-                //     // console.log(fileCol[i][0]);
-                //     const traits = fileCol[i][0];
-                //     firstCol.push(traits);
-                //     // console.log(animalTraits);
+                // for(let i = 1; i<fileCol.length; i++){
+                //     // console.log(fileCol[i]);
+                //     const property = fileCol[i][0];
+                //     const obj = {};
+                //     obj[fileCol[i][0]] = fileCol[i][i];
+                //     console.log(obj);
                 // }
-                
-                // console.log(firstCol);
+
+                const obj = firstRow.reduce((acc, curr)=> {
+                    // console.log(first);
+                    // console.log(next);
+                    // // console.log(first[next]);
+                    // return next = 0;
+                    if(!acc[curr]){
+                        acc[curr] = 0
+                    };
+                    acc[curr]++;
+                    // console.log(acc[curr]);
+                    return acc;
+                    
+                }, {});
+                console.log(obj);
+
+                // use reduce?
+
+                const firstCol = [];
             }
 
         })
