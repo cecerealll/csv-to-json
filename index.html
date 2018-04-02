@@ -7,9 +7,10 @@
     <title>Document</title>
 </head>
 <body>
-    <p></p>
     <input type="file" id='csv'>
     <button>convert</button>
+    <p></p>
+    <a href=""></a>
 
     <script>
         
@@ -46,35 +47,33 @@
                 const firstRow = fileCol[0];
                 console.log(fileCol);
 
-                // for(let i = 1; i<fileCol.length; i++){
-                //     // console.log(fileCol[i]);
-                //     const property = fileCol[i][0];
-                //     const obj = {};
-                //     obj[fileCol[i][0]] = fileCol[i][i];
-                //     console.log(obj);
-                // }
 
                 const obj = firstRow.reduce((acc, curr)=> {
-                    // console.log(first);
-                    // console.log(next);
-                    // // console.log(first[next]);
-                    // return next = 0;
-                    if(!acc[curr]){
-                        acc[curr] = 0
+                    acc[curr] = {
                     };
-                    acc[curr]++;
-                    // console.log(acc[curr]);
+
+                    for(let i = 1; i<fileCol.length; i++){
+                        console.log(fileCol[i]);
+                        console.log(fileCol[i][1])
+                        acc[curr][fileCol[i][0]] = fileCol[i][i];
+                    }
                     return acc;
                     
                 }, {});
-                console.log(obj);
-
-                // use reduce?
-
-                const firstCol = [];
+                console.log(JSON.stringify(obj));
+                const jsonObj = JSON.stringify(obj, null, 2);
+                document.querySelector('p').innerHTML = jsonObj;
+                // let jsonFile = new File(['jsonObj'], 'pets.JSON');
+                // document.querySelector('p').innerHTML = `<a href="pets.JSON" download>hi</a>`;
             }
 
         })
+
+        
+
+
+
+        
         
 
 
