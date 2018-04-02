@@ -8,9 +8,11 @@
 </head>
 <body>
     <input type="file" id='csv'>
-    <button>convert</button>
+    <button>convert first row as heading</button>
+    <!-- <button>convert first column as heading</button> -->
+    
     <p></p>
-    <a href=""></a>
+    <!-- <a href=""></a> -->
 
     <script>
         
@@ -63,8 +65,6 @@
                 console.log(JSON.stringify(obj));
                 const jsonObj = JSON.stringify(obj, null, 2);
                 document.querySelector('p').innerHTML = jsonObj;
-                // let jsonFile = new File(['jsonObj'], 'pets.JSON');
-                // document.querySelector('p').innerHTML = `<a href="pets.JSON" download>hi</a>`;
             }
 
         })
